@@ -1,9 +1,29 @@
 import React, { Component } from "react";
 import Slider from "infinite-react-carousel";
-import { MDCDataTable } from "@material/data-table";
-import { isAbsolute, relative } from "path";
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import hstyle from "./Dashboard.css";
 
+function createData (time,name,location){
+  return{time,name,location};
+}
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+});
+const rows = [
+  createData("17:00-18:30","Hacking Activity 01", "CC14"),
+  createData("18:30-19:30","Hacking Activity 02", "Campus Centre"),
+  createData("19:30-21:30","Hacking Activity 03", "MPH"),
+  createData("22:00-07:00","Hacking Activity 04", "CC13, CC14, MPH"),
+]
 export class Dashboard extends Component {
   render() {
     const settings = {
@@ -17,74 +37,30 @@ export class Dashboard extends Component {
     return (
       <div>
         <Slider {...settings}>
-          <div class="mdc-data-table">
-            <h1 {...hstyle}>Upcoming Events</h1>
-            <table class="mdc-data-table__table" aria-label="Upcoming Events">
-              <thead>
-                <tr class="mdc-data-table__header-row">
-                  <th
-                    class="mdc-data-table__header-cell"
-                    role="columnheader"
-                    scope="col"
-                  >
-                    Time
-                  </th>
-                  <th
-                    class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
-                    role="columnheader"
-                    scope="col"
-                  >
-                    Event Name
-                  </th>
-                  <th
-                    class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
-                    role="columnheader"
-                    scope="col"
-                  >
-                    Location
-                  </th>
-                  <th
-                    class="mdc-data-table__header-cell"
-                    role="columnheader"
-                    scope="col"
-                  >
-                    Remarks
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="mdc-data-table__content">
-                <tr class="mdc-data-table__row">
-                  <td class="mdc-data-table__cell">17:00-18:30</td>
-                  <td class="mdc-data-table__cell">Hacking Activity 01</td>
-                  <td class="mdc-data-table__cell">CC14</td>
-                  <td class="mdc-data-table__cell">ye</td>
-                </tr>
-                <tr class="mdc-data-table__row">
-                  <td class="mdc-data-table__cell">18:30-19:30</td>
-                  <td class="mdc-data-table__cell">Hacking Activity 02</td>
-                  <td class="mdc-data-table__cell">Campus Centre</td>
-                  <td class="mdc-data-table__cell">yee</td>
-                </tr>
-                <tr class="mdc-data-table__row">
-                  <td class="mdc-data-table__cell">20:00-21:30</td>
-                  <td class="mdc-data-table__cell">Hacking Activity 03</td>
-                  <td class="mdc-data-table__cell">Multi Purpose Hall</td>
-                  <td class="mdc-data-table__cell">yeet</td>
-                </tr>
-                <tr class="mdc-data-table__row">
-                  <td class="mdc-data-table__cell">22:00-07:00</td>
-                  <td class="mdc-data-table__cell">Hacking Activity 04</td>
-                  <td class="mdc-data-table__cell">CC13, CC14, MPH</td>
-                  <td class="mdc-data-table__cell">yeeter</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
+          <TableContainer component={Paper}>
+            <Table className={useStyles.table} aria-label="timetable table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">Time</TableCell>
+                  <TableCell align="left">Event Name</TableCell>
+                  <TableCell align="left">Location</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="left">{row.time}</TableCell>
+                    <TableCell align="left">{row.name}</TableCell>
+                    <TableCell align="left">{row.location}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
           </div>
         </Slider>
       </div>
