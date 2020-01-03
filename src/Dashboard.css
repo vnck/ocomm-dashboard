@@ -1,5 +1,13 @@
-const hstyle {
-  position: absolute;
+.HeaderClass {
+  position: fixed;
   left: 100px;
-  top: 150px;
+  bottom: 100px;
+}
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4caf50;
 }
