@@ -1,13 +1,31 @@
+@import url("https://use.typekit.net/cze6mro.css");
+@import url('https://fonts.googleapis.com/css?family=Nunito:600&display=swap');
+
 .HeaderClass {
   position: fixed;
   left: 100px;
   bottom: 100px;
 }
+.inline {
+  display: inline-flex;
+  vertical-align: middle;
+}
 div.sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 999;
   padding: 5px;
-  background-color: #cae8ca;
+  background-color: #ffffff;
   border: 2px solid #4caf50;
+}
+
+.Heading{
+  font-family: 'Nunito', sans-serif;
+  font-size: 45px;
+}
+.Para{
+  font-family: 'brandon-grotesque', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
