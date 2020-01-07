@@ -14,16 +14,18 @@ const useStyles = makeStyles({
     }
 });
 
+//fetching the schedule and tabulating the info
+var sched = require("./upcoming_events.json");
 
 function createData(time, name, location) {
     return { time, name, location };
-  }
-const rows = [
-createData("17:00-18:30", "Hacking Activity 01", "CC14"),
-createData("18:30-19:30", "Hacking Activity 02", "Campus Centre"),
-createData("19:30-21:30", "Hacking Activity 03", "MPH"),
-createData("22:00-07:00", "Hacking Activity 04", "CC13, CC14, MPH")
-];
+}
+console.log(sched.info.length);
+const rows = [];
+for(var i=0;i<sched.info.length;i++){
+    var obj = sched.info[i];
+    rows[i] = createData(obj.event_time.start_time+"-"+obj.event_time.end_time,obj.event_name,obj.event_location);
+}
 
 export class Schedule extends Component{
     render(){
