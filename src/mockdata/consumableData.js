@@ -29,6 +29,11 @@ let consumableData = {
       id: 6,
       name: "Tape",
       status: 20
+    },
+    {
+      id: 7,
+      name: "Food",
+      status: 0
     }
   ]
 }

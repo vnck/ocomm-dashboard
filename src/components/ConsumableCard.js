@@ -7,8 +7,12 @@ export default function ConsumableCard(props){
       <Card>
         <Card.Body>
           <Card.Title>{props.item.name}</Card.Title>
-          <Button variant="secondary">Register</Button>
-          <Button variant="link">View Details</Button>
+          <Card.Text>{props.item.status}</Card.Text>
+          {props.item.status > 0 ? 
+            <Button variant="success">Issue</Button>
+            :
+            <Button variant="danger" disabled>Out of Stock</Button>
+          }
         </Card.Body>
       </Card>
   )

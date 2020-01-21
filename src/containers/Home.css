@@ -1,13 +1,29 @@
-.Home .lander {
-  padding: 80px 0;
-  text-align: center;
+.dashboard {
+  padding: 16px;
 }
 
-.Home .lander h1 {
-  font-family: "Open Sans", sans-serif;
+.stats-table {
+  background-color: #ECEFF1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.stats-table .card-title {
   font-weight: 600;
 }
 
-.Home .lander p {
-  color: #999;
+.stats-table .card {
+  border: none;
+}
+
+.stats-table .card .card-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
 }

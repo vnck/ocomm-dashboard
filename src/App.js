@@ -44,7 +44,7 @@ function App(props) {
             <Nav fill variant="pills">
               {isAuthenticated ?
                 <>
-                  <LinkContainer to="/">
+                  <LinkContainer to="/home">
                     <Nav.Link>Home</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/participants">
@@ -59,10 +59,10 @@ function App(props) {
                   <LinkContainer to="/consumables">
                     <Nav.Link>Consumables</Nav.Link>
                   </LinkContainer>
-                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                  <Nav.Link className="logout" onClick={handleLogout}>Logout</Nav.Link>
                 </> :
                 <LinkContainer to="/login">
-                  <Nav.Link>Login</Nav.Link>
+                  <Nav.Link className="login" >Login</Nav.Link>
                 </LinkContainer>
               }
             </Nav>

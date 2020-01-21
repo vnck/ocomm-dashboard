@@ -7,9 +7,10 @@ export default function LoanCard(props){
       <Card>
         <Card.Body>
           <Card.Title>{props.item.name}</Card.Title>
-          <Card.Text>{props.item.status ? "On Loan" : "Available"}</Card.Text>
+          <Card.Text>{props.item.status ?
+          <p style={{"color":"red"}}>On Loan</p> : <p style={{"color":"green"}}>Available</p>}</Card.Text>
           {props.item.status ?
-            <Button variant="danger">Return</Button>
+            <Button variant="waiting">Return</Button>
             :
             <Button variant="success">Loan</Button>
           }

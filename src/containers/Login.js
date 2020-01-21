@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton"
+import "./Login.css";
 
 export default function Login(props) {
   const [password, setPassword] = useState("");
@@ -27,7 +28,7 @@ export default function Login(props) {
   return (
     <div className="Login">
       <div className="description">
-        <p>Access to this portal is for authorised staff members of What The Hack @ SUTD.</p>
+        <p>Access to this portal is for authorised staff members of What The Hack @ SUTD only.<br></br>(ง'̀-'́)ง</p>
       </div> 
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="password" bsSize="large">

@@ -1,5 +1,6 @@
 .App {
   margin-top: 15px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .App .navbar-brand {
@@ -8,4 +9,99 @@
 
 .App .navbar-items {
   justify-content: flex-end;
+
+}
+
+.btn-primary {
+  color: white;
+  background-color: #00ACC1;
+  border-color: #00ACC1;
+}
+.btn-primary:hover {
+  color: white;
+  background-color: #00838F;
+  border-color: #006064;
+}
+
+.btn-primary:disabled {
+  color: white;
+  background-color: #90A4AE;
+  border-color: #90A4AE;
+  cursor: default;
+}
+
+.btn-secondary {
+  color: white;
+  background-color: #607D8B;
+  border-color: #607D8B;
+}
+.btn-secondary:hover {
+  color: white;
+  background-color: #455A64;
+  border-color: #37474F;
+}
+
+.btn-success {
+  color: white;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.btn-success:hover {
+  color: white;
+  background-color: #2E7D32;
+  border-color: #1B5E20;
+}
+
+.btn-danger {
+  color: white;
+  background-color: #f44336;
+  border-color: #f44336;
+}
+.btn-danger:hover {
+  color: white;
+  background-color: #c62828;
+  border-color: #b71c1c;
+}
+
+.btn-waiting {
+  color: white;
+  background-color: #FB8C00;
+  border-color: #FB8C00;
+}
+.btn-waiting:hover {
+  color: white;
+  background-color: #EF6C00;
+  border-color: #E65100;
+}
+
+a {
+  color: #00ACC1;
+}
+
+a:hover {
+  color: #00838F;
+}
+
+.btn-link {
+  color: #00ACC1;
+}
+
+.btn-link:hover {
+  color: #00838F;
+}
+
+.nav-pills .nav-link {
+  margin: 0 8px;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #4DD0E1;
+}
+
+.navbar-nav .nav-link.logout {
+  color: #f44336;
+}
+
+.navbar-nav .nav-link.login {
+  color: #4DD0E1;
 }

@@ -8,3 +8,9 @@
     max-width: 320px;
   }
 }
+
+.Login .description {
+  text-align: center;
+  color: #00838F;
+  padding: 30px;
+}
