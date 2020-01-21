@@ -1,6 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import Dashboard from "./Dashboard";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
 
-ReactDOM.render(<Dashboard />, document.getElementById("root"));
+ReactDOM.render(
+  <Router>
+    <App/>
+  </Router>,
+  document.getElementById('root')
+);
