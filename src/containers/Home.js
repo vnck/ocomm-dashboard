@@ -8,8 +8,8 @@ export default function Home(){
   const [NumGroups, SetNumGroups] = useState(0); 
 
   useEffect(() => {
-    fetch('127.0.0.1:5000/groups/get_all', {method:'GET'})
-    .then(response => response.json())
+    fetch('/groups/get_all', {method:'GET'})
+    .then(response => {return response.json();})
     .then(json => {
       SetNumGroups(json._groups_count);
     })
@@ -17,7 +17,7 @@ export default function Home(){
       console.log(e);
     })
     
-    fetch('127.0.0.1:5000/participants/get_all', {method:'GET'})
+    fetch('/participants/get_all', {method:'GET'})
     .then(response => response.json())
     .then(json => {
       SetNumParticipants(json._participants_count);
