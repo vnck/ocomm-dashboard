@@ -9,14 +9,17 @@ export default function Loans(){
   const [filteredListOfLoans, setFilteredListOfLoans] = useState([]);
 
   useEffect(() => {
-    // fetch('127.0.0.1:5000/loans/get_all', {method:'GET'})
-    // .then(response => response.json())
-    // .then(json => {
-    //   setListOfLoans(json.loans_get_all);
-    //   setFilteredListOfLoans(json.loans_get_all);
-    // })
-    setListOfLoans(loanData.loans);
-    setFilteredListOfLoans(loanData.loans);
+    fetch('127.0.0.1:5000/loans/get_all', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      setListOfLoans(json.loans_get_all);
+      setFilteredListOfLoans(json.loans_get_all);
+    })
+    .catch(e => {
+      console.log(e);
+      setListOfLoans(loanData.loans);
+      setFilteredListOfLoans(loanData.loans);
+    })
   }, []);
 
   function filterSearch(e) {

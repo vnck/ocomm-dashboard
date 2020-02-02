@@ -15,14 +15,17 @@ export default function Groups(){
   const handleShow = () => setFormPopup(true);
 
   useEffect(() => {
-    // fetch('127.0.0.1:5000/groups/get_all', {method:'GET'})
-    // .then(response => response.json())
-    // .then(json => {
-    //   setListOfGroups(json.groups_get_all);
-    //   setFilteredListOfGroups(json.groups_get_all);
-    // })
-    setListOfGroups(groupData.groups);
-    setFilteredListOfGroups(groupData.groups);
+    fetch('127.0.0.1:5000/groups/get_all', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      setListOfGroups(json.groups_get_all);
+      setFilteredListOfGroups(json.groups_get_all);
+    })
+    .catch(e => {
+      console.log(e);
+      setListOfGroups(groupData.groups);
+      setFilteredListOfGroups(groupData.groups);
+    })
   }, []);
 
   function filterSearch(e) {

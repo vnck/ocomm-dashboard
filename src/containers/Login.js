@@ -5,24 +5,37 @@ import "./Login.css";
 
 export default function Login(props) {
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm(){
     return password.length > 0;
   }
 
-  function handleSubmit(event){
-    event.preventDefault();
-
+  function handleSubmit(e){
+    e.preventDefault();
     setIsLoading(true);
+    fetch('127.0.0.1:5000/login', {
+      method:'POST',
+      body: JSON.stringify({
+        "username": e.target.user, "password":e.target.password
+      })
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json.success === "Logged in"){
+        props.userHasAuthenticated(true);
+        props.history.push("/");
+      } else {
+        alert("Failed to log in. Please try again.");
+        setIsLoading(false);
+      }
 
-    try {
-      props.userHasAuthenticated(true);
-      props.history.push("/");
-    } catch (e) {
-      alert("Failed to Log In");
-      setIsLoading(false);
-    }
+    })
+    .catch(e => {
+      console.log(e);
+      alert("Request Failed, auto logging in.");
+    })
   }
 
   return (
@@ -31,12 +44,22 @@ export default function Login(props) {
         <p>Access to this portal is for authorised staff members of What The Hack @ SUTD only.<br></br>(ง'̀-'́)ง</p>
       </div> 
       <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="login" bsSize="large">
+          <Form.Label>User</Form.Label>
+          <Form.Control
+            name="user"
+            type="text"
+            value={user}
+            onChange={e=> setUser(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group controlId="password" bsSize="large">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            name="password"
             type="password"
+            value={password}
+            onChange={e=> setPassword(e.target.value)}
           />
         </Form.Group>
         <LoaderButton

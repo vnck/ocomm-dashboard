@@ -9,14 +9,18 @@ export default function Participants(){
   const [filteredListOfParticipants, setFilteredListOfParticipants] = useState([]);
 
   useEffect(() => {
-    // fetch('127.0.0.1:5000/participants/get_all', {method:'GET'})
-    // .then(response => response.json())
-    // .then(json => {
-    //   setListOfParticipants(json.participants_all);
-    //   setFilteredListOfParticipants(json.participants_all);
-    // })
-    setListOfParticipants(participantData.participants);
-    setFilteredListOfParticipants(participantData.participants);
+    fetch('127.0.0.1:5000/participants/get_all', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      setListOfParticipants(json.participants_all);
+      setFilteredListOfParticipants(json.participants_all);
+    })
+    .catch(e => {
+      console.log(e);
+      setListOfParticipants(participantData.participants);
+      setFilteredListOfParticipants(participantData.participants);
+    })
+    
   }, []);
 
   function filterSearch(e) {

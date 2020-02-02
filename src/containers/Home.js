@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "./Home.css"
@@ -6,6 +6,27 @@ import "./Home.css"
 export default function Home(){
   const [NumParticipants, SetNumParticipants] = useState(0); 
   const [NumGroups, SetNumGroups] = useState(0); 
+
+  useEffect(() => {
+    fetch('127.0.0.1:5000/groups/get_all', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      SetNumGroups(json._groups_count);
+    })
+    .catch(e => {
+      console.log(e);
+    })
+    
+    fetch('127.0.0.1:5000/participants/get_all', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      SetNumParticipants(json._participants_count);
+    })
+    .catch(e => {
+      console.log(e);
+    })
+  }, []);
+
   return (
     <div className="dashboard">
       <div className="header"><h1>Dashboard</h1></div>
