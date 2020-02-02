@@ -9,6 +9,12 @@ export default function Loans(){
   const [filteredListOfLoans, setFilteredListOfLoans] = useState([]);
 
   useEffect(() => {
+    // fetch('127.0.0.1:5000/loans/get_all', {method:'GET'})
+    // .then(response => response.json())
+    // .then(json => {
+    //   setListOfLoans(json.loans_get_all);
+    //   setFilteredListOfLoans(json.loans_get_all);
+    // })
     setListOfLoans(loanData.loans);
     setFilteredListOfLoans(loanData.loans);
   }, []);
@@ -38,6 +44,7 @@ export default function Loans(){
         <div className="topbar">
           <span>Item Name</span>
           <span>Status</span>
+          <span>On Loan To</span>
         </div>
         <div className="result-container">
           {filteredListOfLoans.map((p) => 

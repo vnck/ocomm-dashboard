@@ -10,6 +10,12 @@ export default function Consumables(){
 
 
   useEffect(() => {
+    // fetch('127.0.0.1:5000/consumables/get_all', {method:'GET'})
+    // .then(response => response.json())
+    // .then(json => {
+    //   setListOfConsumables(json.consumables_get_all);
+    //   setFilteredListOfConsumables(json.consumables_get_all);
+    // })
     setListOfConsumables(consumableData.consumables);
     setFilteredListOfConsumables(consumableData.consumables);
   }, []);

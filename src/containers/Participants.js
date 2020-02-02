@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from "react";
 import ParticipantCard from "../components/ParticipantCard";
-import ConfirmationPopUp from "../components/ConfirmationPopUp";
 import "./Participants.css";
 import participantData from '../mockdata/participantData'
 
@@ -9,15 +8,13 @@ export default function Participants(){
   const [listOfParticipants, setListOfParticipants] = useState([]);
   const [filteredListOfParticipants, setFilteredListOfParticipants] = useState([]);
 
-  const [registrationPopup, setRegistrationPopup] = useState(false);
-  const handleCloseRegPopup = () => setRegistrationPopup(false);
-  const handleShowRegPopup = () => setRegistrationPopup(true);
-
-  const [deregistrationPopup, setDeregistrationPopup] = useState(false);
-  const handleCloseDeregPopup = () => setDeregistrationPopup(false);
-  const handleShowDeregPopup = () => setDeregistrationPopup(true);
-
   useEffect(() => {
+    // fetch('127.0.0.1:5000/participants/get_all', {method:'GET'})
+    // .then(response => response.json())
+    // .then(json => {
+    //   setListOfParticipants(json.participants_all);
+    //   setFilteredListOfParticipants(json.participants_all);
+    // })
     setListOfParticipants(participantData.participants);
     setFilteredListOfParticipants(participantData.participants);
   }, []);
@@ -49,24 +46,10 @@ export default function Participants(){
         </div>
         <div className="result-container">
           {filteredListOfParticipants.map((p) => 
-            <ParticipantCard key={p.name} item={p} handleRegister={handleShowRegPopup} handleDeregister={handleShowDeregPopup} />
+            <ParticipantCard key={p.name} item={p} />
           )}
         </div>
       </div>
-
-      <ConfirmationPopUp
-        title="Confirmation"
-        body="Confirm registration"
-        show={registrationPopup}
-        handleClose={handleCloseRegPopup}
-      />
-
-      <ConfirmationPopUp
-        title="Confirmation"
-        body="Confirm deregistration"
-        show={deregistrationPopup}
-        handleClose={handleCloseDeregPopup}
-      />
 
     </div>
   )

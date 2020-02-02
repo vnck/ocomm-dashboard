@@ -11,7 +11,7 @@ export default function ConfirmationPopUp(props) {
       <Modal.Body>{props.body}</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>Close</Button>
-        <Button variant="primary" onClick={props.handleClose}>Confirm</Button>
+        <Button variant="primary" onClick={props.handleSubmit}>Confirm</Button>
       </Modal.Footer>
     </Modal>
   );

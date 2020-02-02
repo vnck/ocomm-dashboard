@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import GroupCard from "../components/GroupCard";
+import GroupCreateFormPopup from '../components/GroupCreateFormPopup'
 import "./Groups.css";
 import groupData from "../mockdata/groupData"
 
@@ -9,8 +10,17 @@ export default function Groups(){
   const [listOfGroups, setListOfGroups] = useState([]);
   const [filteredListOfGroups, setFilteredListOfGroups] = useState([]);
 
+  const [formPopup, setFormPopup] = useState(false);
+  const handleClose = () => setFormPopup(false);
+  const handleShow = () => setFormPopup(true);
 
   useEffect(() => {
+    // fetch('127.0.0.1:5000/groups/get_all', {method:'GET'})
+    // .then(response => response.json())
+    // .then(json => {
+    //   setListOfGroups(json.groups_get_all);
+    //   setFilteredListOfGroups(json.groups_get_all);
+    // })
     setListOfGroups(groupData.groups);
     setFilteredListOfGroups(groupData.groups);
   }, []);
@@ -35,7 +45,7 @@ export default function Groups(){
           <></>
         }
       <div className="button-container">
-        <Button>Create Group</Button>
+        <Button onClick={handleShow}>Create Group</Button>
       </div>
       </div>
       <div className="list-container">
@@ -52,6 +62,7 @@ export default function Groups(){
           )}
         </div>
       </div>
+      <GroupCreateFormPopup show={formPopup} handleClose={handleClose}/>
     </div>
   )
 }
