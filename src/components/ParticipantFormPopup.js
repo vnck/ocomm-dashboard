@@ -6,19 +6,20 @@ export default function ParticipantFormPopup(props) {
   const [item, setItemDetails] = useState({});
 
   useEffect(() => {
-    // fetch('127.0.0.1:5000/participants/' + props.item.id + 'alldata', {method:'GET'})
-    // .then(response => response.json())
-    // .then(json => {
-    //   setItemDetails(json.participants_ID_alldata);
-    // })
+    fetch('/participants/' + props.item.id + 'alldata', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      setItemDetails(json.participants_ID_alldata);
+    })
+    .catch(e => console.log(e));
   }, []);
 
   const handleSubmit = event => {
-    const data = new FormData(event.target);
-    fetch("127.0.0.1:5000/participants/"+ props.item.id +"/update", {
-      method: 'POST',
-      body: 'data',
-    });
+    // const data = new FormData(event.target);
+    // fetch("127.0.0.1:5000/participants/"+ props.item.id +"/update", {
+    //   method: 'POST',
+    //   body: 'data',
+    // });
   };
 
   return (

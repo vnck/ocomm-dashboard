@@ -15,26 +15,28 @@ export default function Login(props) {
   function handleSubmit(e){
     e.preventDefault();
     setIsLoading(true);
+    let data = new FormData(e.target);
     fetch('127.0.0.1:5000/login', {
       method:'POST',
-      body: JSON.stringify({
-        "username": e.target.user, "password":e.target.password
-      })
-  })
+      body: data
+    })
     .then(response => response.json())
     .then(json => {
       if (json.success === "Logged in"){
+        setIsLoading(false);
         props.userHasAuthenticated(true);
         props.history.push("/");
       } else {
         alert("Failed to log in. Please try again.");
         setIsLoading(false);
       }
-
     })
     .catch(e => {
       console.log(e);
       alert("Request Failed, auto logging in.");
+      setIsLoading(false);
+      props.userHasAuthenticated(true);
+      props.history.push("/");
     })
   }
 
@@ -47,7 +49,7 @@ export default function Login(props) {
         <Form.Group controlId="login" bsSize="large">
           <Form.Label>User</Form.Label>
           <Form.Control
-            name="user"
+            name="username"
             type="text"
             value={user}
             onChange={e=> setUser(e.target.value)}
