@@ -6,7 +6,8 @@ export default function ParticipantFormPopup(props) {
   const [item, setItemDetails] = useState({});
 
   useEffect(() => {
-    fetch('/participants/' + props.item.id + 'alldata', {method:'GET'})
+    console.log("called");
+    fetch('/participants/' + props.item.id + '/alldata', {method:'GET'})
     .then(response => response.json())
     .then(json => {
       setItemDetails(json.participants_ID_alldata);

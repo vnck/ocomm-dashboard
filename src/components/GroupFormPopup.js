@@ -6,11 +6,11 @@ export default function GroupFormPopup(props) {
   const [item, setItemDetails] = useState({});
 
   useEffect(() => {
-    // fetch('127.0.0.1:5000/groups/' + props.item.id + 'alldata', {method:'GET'})
-    // .then(response => response.json())
-    // .then(json => {
-    //   setItemDetails(json.groups_ID_alldata);
-    // })
+    fetch('/groups/' + props.item.id + '/alldata', {method:'GET'})
+    .then(response => response.json())
+    .then(json => {
+      setItemDetails(json.groups_ID_alldata);
+    })
   }, []);
   
   return (
